@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>ejb-integration-example</artifactId>
+        <version>3.0.17.Final-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ejb-integration-deploy</artifactId>
+    <!--<packaging>jar</packaging>-->
+    <name>Deploy ear</name>
+    <!--<description/>-->
+    <!--<url>http://maven.apache.org</url>-->
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.resteasy</groupId>-->
+            <!--<artifactId>resteasy-jaxrs</artifactId>-->
+            <!--<version>3.0.15.Final</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>javax.ejb</groupId>-->
+            <!--<artifactId>ejb-api</artifactId>-->
+            <!--<version>3.0</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+    <!--</dependencies>-->
+    <build>
+        <plugins>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<source>1.6</source>-->
+                    <!--<target>1.6</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+            <execution>
+            <phase>deploy</phase>
+            <configuration>
+            <tasks>
+            <!--<copy file="${basedir}/ear/target/*.ear" toDir="/home/ee37845/jboss-eap-6.3/standalone/deployments"/>-->
+                <copy file="${basedir}/ear/target/*.ear" toDir="/home/ee37845/jboss-eap-6.3/standalone/deployments"/>
+                <echo>Prova!!!</echo>
+            </tasks>
+            </configuration>
+            <goals>
+            <goal>run</goal>
+            </goals>
+            </execution>
+            </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.ekryd.echo-maven-plugin</groupId>
+                <artifactId>echo-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>echo</goal>
+                        </goals>
+                        <configuration>
+                            <message>war has changed</message>
+                            <level>INFO</level>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>2.0</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <source>
+                                log.info('Test message: {}', 'Hello, World!')
+                            </source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

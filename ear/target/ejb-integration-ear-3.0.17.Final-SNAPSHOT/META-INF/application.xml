@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC
+	"-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN"
+	"http://java.sun.com/dtd/application_1_3.dtd">
+<application>
+  <display-name>ejb-integration-ear</display-name>
+  <description></description>
+  <module>
+    <ejb>ejb-integration-3.0.17.Final-SNAPSHOT.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>ejb-integration-war-3.0.17.Final-SNAPSHOT.war</web-uri>
+      <context-root>/ejb-integration-war</context-root>
+    </web>
+  </module>
+</application>
